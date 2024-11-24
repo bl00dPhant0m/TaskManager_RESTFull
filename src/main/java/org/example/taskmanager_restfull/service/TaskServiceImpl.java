@@ -5,6 +5,8 @@ import org.example.taskmanager_restfull.exception.TaskNotFoundException;
 import org.example.taskmanager_restfull.model.entity.Task;
 import org.example.taskmanager_restfull.model.enums.Status;
 import org.example.taskmanager_restfull.repository.TaskRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -46,5 +48,10 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<Task> findAllTasks() {
         return taskRepository.findAll();
+    }
+
+    @Override
+    public Page<Task> findAllTasks(Pageable pageable) {
+        return taskRepository.findAll(pageable);
     }
 }
